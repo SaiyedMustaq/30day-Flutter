@@ -1,4 +1,4 @@
-# pavan_kumar_flutter_30_days
+#flutter_30_days
 
 A new Flutter application.
 
