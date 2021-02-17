@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pavan_kumar_flutter_30_days/pages/login_page.dart';
+import 'package:pavan_kumar_flutter_30_days/utils/routs.dart';
 import 'pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: ThemeData(
         primarySwatch: Colors.blueGrey,
-          fontFamily: GoogleFonts.lato().fontFamily,
+        fontFamily: GoogleFonts.lato().fontFamily,
       ),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -25,8 +26,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: "/login",
       routes: {
-        "/": (context) => HomePage(),
-        "/login": (contex) => LoginPage(),
+        MyRousts.homeRoute: (context) => HomePage(),
+        MyRousts.loginRoute: (contex) => LoginPage(),
       },
     );
   }
