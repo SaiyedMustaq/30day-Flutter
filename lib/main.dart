@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pavan_kumar_flutter_30_days/pages/login_page.dart';
 import 'package:pavan_kumar_flutter_30_days/utils/routs.dart';
+import 'package:pavan_kumar_flutter_30_days/widget/themes.dart';
 import 'pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,15 +16,10 @@ class MyApp extends StatelessWidget {
     bringVegitables(isHave: true);
     return MaterialApp(
       themeMode: ThemeMode.system,
-      darkTheme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        fontFamily: GoogleFonts.lato().fontFamily,
-      ),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+      theme: MyThemed.lightthemeData(context),
+      darkTheme: MyThemed.darkthemeData(context),
       initialRoute: "/login",
       routes: {
         MyRousts.homeRoute: (context) => HomePage(),

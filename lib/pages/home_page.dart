@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pavan_kumar_flutter_30_days/widget/drawer.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  int days = 25;
-  double day = 22;
-  String name = "Saiyed";
-  num data = 12.3; //contain both int double
-  var daya = "Tuesday"; // all type of variable
-  static const double pi = 3.14;
   @override
   Widget build(BuildContext contgitext) {
     return Scaffold(
@@ -16,14 +11,14 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Welcome to $day Days of flutter  $name',
+          'Welcome to 30 Day Flutter  ',
           style: TextStyle(
             fontSize: 10,
             color: Colors.black,
           ),
         ),
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
