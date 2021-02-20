@@ -3,7 +3,6 @@ import 'package:pavan_kumar_flutter_30_days/pages/login_page.dart';
 import 'package:pavan_kumar_flutter_30_days/utils/routs.dart';
 import 'package:pavan_kumar_flutter_30_days/widget/themes.dart';
 import 'pages/home_page.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   //entry method point
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: MyThemed.lightthemeData(context),
       darkTheme: MyThemed.darkthemeData(context),
-      initialRoute: "/login",
+      initialRoute: "/home",
       routes: {
         MyRousts.homeRoute: (context) => HomePage(),
         MyRousts.loginRoute: (contex) => LoginPage(),
