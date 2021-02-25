@@ -20,11 +20,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    var catlogJSON = await rootBundle.loadString('assets/files/catlog.json');
+    await Future.delayed(Duration(seconds: 2));
+    var catlogJSON = await rootBundle.loadString("assets/files/catlog.json");
     print(catlogJSON);
-    var decodeJsonr = jsonDecode(catlogJSON);
-    print(decodeJsonr);
-    var pdroductsData = decodeJsonr['product'];
+    var decodeJson = jsonDecode(catlogJSON);
+    print(decodeJson);
+    var productsData = decodeJson['product'];
+    CatlogModel.catlogItems = List.from(productsData)
+        .map<CatlogItem>((item) => CatlogItem.fromMap(item))
+        .toList();
+    setState(() {});
   }
 
   @override
@@ -35,12 +40,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: ListView.builder(
-          itemBuilder: (ctx, index) {
-            return ProductWidget(catlogItem: CatlogModel.catlogItems[index]);
-          },
-          itemCount: CatlogModel.catlogItems.length,
-        ),
+        child: (CatlogModel.catlogItems != null &&
+                CatlogModel.catlogItems.isNotEmpty)
+            ? ListView.builder(
+                itemBuilder: (ctx, index) =>
+                    ProductWidget(catlogItem: CatlogModel.catlogItems[index]),
+                itemCount: CatlogModel.catlogItems.length,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       drawer: MyDrawer(),
     );
