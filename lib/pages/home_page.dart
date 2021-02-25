@@ -42,9 +42,41 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(16),
         child: (CatlogModel.catlogItems != null &&
                 CatlogModel.catlogItems.isNotEmpty)
-            ? ListView.builder(
-                itemBuilder: (ctx, index) =>
-                    ProductWidget(catlogItem: CatlogModel.catlogItems[index]),
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 10,
+                ),
+                itemBuilder: (context, index) {
+                  final item = CatlogModel.catlogItems[index];
+                  return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+                      child: GridTile(
+                          footer: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(color: Colors.deepPurple),
+                            child: Text(
+                              item.price.toString(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          header: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(color: Colors.deepPurple),
+                            child: Text(
+                              item.name,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                          child: Image.network(
+                            item.imageUrl,
+                            fit: BoxFit.scaleDown,
+                          )));
+                },
                 itemCount: CatlogModel.catlogItems.length,
               )
             : Center(
@@ -52,6 +84,14 @@ class _HomePageState extends State<HomePage> {
               ),
       ),
       drawer: MyDrawer(),
+    );
+  }
+
+  ListView buildListView() {
+    return ListView.builder(
+      itemBuilder: (ctx, index) =>
+          ProductWidget(catlogItem: CatlogModel.catlogItems[index]),
+      itemCount: CatlogModel.catlogItems.length,
     );
   }
 }
